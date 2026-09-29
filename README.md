@@ -1,13 +1,28 @@
-# VVRBench
+<div align="center">
 
-Code for *Verifiable Visual Rewards Transfer from Synthetic Scenes to Natural Prompts*.
+# Verifiable Visual Rewards Transfer from Synthetic Scenes to Natural Prompts
 
-VVR (verifiable visual rewards) scores a generated image against a formal task specification with deterministic program verifiers: no learned reward model and no reference image. This repository contains
+[Shuyue Stella Li](https://stellalisy.com/), [Xiaochuang Han](https://xhan77.github.io/), [Yulia Tsvetkov](https://homes.cs.washington.edu/~yuliats/), [Luke Zettlemoyer](https://www.cs.washington.edu/people/faculty/luke-zettlemoyer/)
 
-- `vvr_bench/`: the VVRBench evaluator and the verifier library, and
-- RLVVR training code for text-to-image post-training with VVR rewards (being added).
+University of Washington
 
-Data: [huggingface.co/datasets/stellalisy/VVRBench](https://huggingface.co/datasets/stellalisy/VVRBench)
+[![Data](https://img.shields.io/badge/%F0%9F%A4%97%20Data-VVRBench-yellow)](https://huggingface.co/datasets/stellalisy/VVRBench)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+<img src="assets/teaser.png" alt="Four VVRBench tasks at increasing complexity, each with its prompt, a reference image, and its constraint families" width="100%">
+
+</div>
+
+Precise instruction following in image generation, such as satisfying object counts and spatial relations, is usually trained with learned reward models such as object detectors and vision-language models. **Verifiable Visual Rewards (VVR)** replace them with deterministic program verifiers. Each VVR task is a scene of geometric objects and relations among them, from which we derive both the prompt and a verifier, so tasks can be generated in any number and at any chosen complexity.
+
+- **VVRBench**: 10,000 tasks over 32 constraint types, plus VVRBench-Challenge with 720 more complex tasks. The strongest model we evaluate, GPT-Image-2.5, solves 21.4% of VVRBench-Challenge.
+- **RLVVR**: using VVR scores as reinforcement learning rewards raises the accuracy of Stable Diffusion 3.5 Medium on VVRBench from 2.8% to 28.3%, and the gains extend to natural prompts outside VVR.
+
+This repository contains the VVRBench evaluator and verifier (`vvr_bench/`) and the RLVVR training code.
+
+## Data
+
+All data is in [stellalisy/VVRBench](https://huggingface.co/datasets/stellalisy/VVRBench) on Hugging Face.
 
 | Configuration | Split | Tasks | Use |
 |---|---|---|---|
@@ -63,6 +78,17 @@ The evaluator scores each image at the resolution you save it. In the paper, ope
 ## The verifier
 
 `vvr_bench/verifier.py` extracts objects from the image with fixed pixel operations and checks each constraint with a program verifier. `score_image_spec(image, spec)` returns a score and a dictionary of per-constraint results; `strict` in that dictionary is the pass-or-fail decision used for accuracy. [`VERIFIER.md`](VERIFIER.md) lists the 46 constraint types and the validation record.
+
+## Citation
+
+```bibtex
+@misc{li2026verifiable,
+  title  = {Verifiable Visual Rewards Transfer from Synthetic Scenes to Natural Prompts},
+  author = {Li, Shuyue Stella and Han, Xiaochuang and Tsvetkov, Yulia and Zettlemoyer, Luke},
+  year   = {2026},
+  url    = {https://github.com/stellalisy/VVRBench}
+}
+```
 
 ## License
 
