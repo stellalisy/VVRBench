@@ -6,6 +6,8 @@
 
 University of Washington
 
+[![arXiv](https://img.shields.io/badge/arXiv-2609.35641-b31b1b.svg)](https://arxiv.org/abs/2609.35641)
+[![Tweet](https://img.shields.io/badge/Tweet-Thread-000000?logo=x)](https://x.com/StellaLisy/status/2104947596355846175)
 [![Data](https://img.shields.io/badge/%F0%9F%A4%97%20Data-VVRBench-yellow)](https://huggingface.co/datasets/stellalisy/VVRBench)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
@@ -82,11 +84,14 @@ The evaluator scores each image at the resolution you save it. In the paper, ope
 ## Citation
 
 ```bibtex
-@misc{li2026verifiable,
-  title  = {Verifiable Visual Rewards Transfer from Synthetic Scenes to Natural Prompts},
-  author = {Li, Shuyue Stella and Han, Xiaochuang and Tsvetkov, Yulia and Zettlemoyer, Luke},
-  year   = {2026},
-  url    = {https://github.com/stellalisy/VVRBench}
+@misc{li2026verifiablevisualrewardstransfer,
+      title={Verifiable Visual Rewards Transfer from Synthetic Scenes to Natural Prompts},
+      author={Shuyue Stella Li and Xiaochuang Han and Yulia Tsvetkov and Luke Zettlemoyer},
+      year={2026},
+      eprint={2609.35641},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2609.35641},
 }
 ```
 
